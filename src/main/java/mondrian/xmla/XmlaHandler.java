@@ -1678,29 +1678,8 @@ public class XmlaHandler {
                     getResponseMimeType(request);
                 final MDDataSet dataSet;
                 
-                /* Excell needs to support Native
-                 * if (format == Format.Multidimensional) {
-                    dataSet =
-                        new MDDataSet_Multidimensional(
-                            extra,
-                            cellSet,
-                            content != Content.DataIncludeDefaultSlicer,
-                            responseMimeType
-                            == Enumeration.ResponseMimeType.JSON){
-                        @Override /// @see https://github.com/olap4j/olap4j-xmlaserver/issues/9 
-                        public void close() throws SQLException {
-                            closable.close();
-                        }
-                    };
-                } else {
-                    dataSet =
-                        new MDDataSet_Tabular(cellSet){
-                        @Override /// @see https://github.com/olap4j/olap4j-xmlaserver/issues/9 
-                        public void close() throws SQLException {
-                            closable.close();
-                        }
-                    };
-                }*/
+                // Excel needs to support Multidimensional by default
+
                 if (format == Format.Tabular) {
                     dataSet =
                                new MDDataSet_Tabular(cellSet){
